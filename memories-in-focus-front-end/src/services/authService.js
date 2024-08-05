@@ -1,6 +1,20 @@
 const BACKEND_URL = import.meta.env.VITE_EXPRESS_BACKEND_URL
 
 
+const signout = () => {
+  localStorage.removeItem('token');
+};
+
+
+
+
+const getUser = () => {
+  const token = localStorage.getItem('token');
+  if (!token) return null;
+  const user = JSON.parse(atob(token.split('.')[1]));
+  return user;
+};
+
 const signup = async (formData) => {
 
     try {
@@ -13,6 +27,7 @@ const signup = async (formData) => {
       if (json.error) {
         throw new Error(json.error);
       }
+      localStorage.setItem('token', json.token);
       return json;
     } catch (error) {
       console.log(error);
@@ -30,19 +45,22 @@ const signin = async (user) => {
       });
       const json = await res.json();
   
-      if (json.error) {
-        throw new Error(json.error);
-      }
-  
       if (json.token) {
-        const user = JSON.parse(atob(json.token.split('.')[1]));
-        return user;
+        localStorage.setItem('token', json.token);
+
+     const user = JSON.parse(atob(json.token.split('.')[1]));
+        
+     return user;
+
       }
-    } catch (err) {
-      console.log(err);
+      if (json.error) {
+        throw new Error(json.error)
+      }
+    } catch (error) {
+      console.log(error);
       throw err;
     }
   };
 
   
-  export  { signup, signin };
+  export  { signup, signin, getUser, signout };
