@@ -1,21 +1,17 @@
 import { useState } from 'react';
-
-const PhotoForm = (props) => {
-  const [formData, setFormData] = useState({
+const PhotoForm = ({ handleAddPhoto }) => {
+    const [formData, setFormData] = useState({
     title: '',
-    text: '',
     image: '',
+    text: ''
   });
-
   const handleChange = (evt) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
   };
-
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    props.handleAddPhoto(formData);
+    handleAddPhoto(formData)
   };
-
   return (
     <main>
       <form onSubmit={handleSubmit}>
@@ -28,13 +24,21 @@ const PhotoForm = (props) => {
           value={formData.title}
           onChange={handleChange}
         />
-        <label htmlFor="text-input">Text</label>
+        <label htmlFor="image-input">image</label>
+        <input
+          required
+          name="image"
+          id="image-input"
+          value={formData.image}
+          onChange={handleChange}
+        />
+        <label htmlFor="description-input">Text</label>
         <textarea
           required
           type="text"
-          name="text"
-          id="text-input"
-          value={formData.text}
+          name="description"
+          id="description-input"
+          value={formData.description}
           onChange={handleChange}
         />
         <button type="submit">SUBMIT</button>
@@ -42,5 +46,4 @@ const PhotoForm = (props) => {
     </main>
   );
 };
-
-export default PhotoForm;
+export default PhotoForm
