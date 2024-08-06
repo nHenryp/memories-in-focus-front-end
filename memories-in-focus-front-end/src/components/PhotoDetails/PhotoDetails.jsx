@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import * as photoService from '../../services/photoService'
 
-const PhotoDetails = (props) => {
+const PhotoDetails = () => {
     const [photo, setPhoto] = useState(null)
     
     const { photoId } = useParams()
