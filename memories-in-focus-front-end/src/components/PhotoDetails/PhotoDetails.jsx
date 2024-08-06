@@ -27,6 +27,27 @@ const PhotoDetails = (props) => {
             {photo.image}<br/>
             {photo.description}
         </p>
+        <section>
+        <h5>comments</h5>
+        {photo.comments.map((comment) => (
+            <article key={comment._id}>
+                <header>
+                    <p>
+                        {comment.text}<br/>
+                        {comment.author.username} posted on <br/>
+                        {new Date(comment.createdAt).toLocaleDateString()}
+                        
+                      
+                      
+                       </p>
+                </header>
+            </article>
+        ))}  
+
+                   
+
+        
+        </section>
     </main>
 }
 
