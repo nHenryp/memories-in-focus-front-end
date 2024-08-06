@@ -47,3 +47,12 @@ const PhotoForm = ({ handleAddPhoto }) => {
   );
 };
 export default PhotoForm
+
+
+
+
+
+
+
+
+
