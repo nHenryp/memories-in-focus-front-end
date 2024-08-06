@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import HomePage from './components/HomePage/HomePage'
 import SignupForm from './components/SignupForm/SignupForm' 
@@ -9,6 +9,9 @@ import * as authService from '../src/services/authService'
 import * as photoService from '../src/services/photoService'
 import PhotoList from './components/PhotoList/PhotoList'
 import PhotoDetails from './components/PhotoDetails/PhotoDetails'
+import PhotoForm from './components/PhotoForm/PhotoForm';
+
+
 
 
 export const AuthedUserContext = createContext(null)
@@ -16,6 +19,9 @@ export const AuthedUserContext = createContext(null)
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [photos, setPhotos] = useState([])
+
+  // Location variables
+  const navigate = useNavigate()
 
   const handleSignout = () => {
     authService.signout()
@@ -31,6 +37,13 @@ const App = () => {
   }, [user])
   
 
+  const handleAddPhoto = async (photoFormData) => {
+    const newPhoto = await photoService.create(photoFormData);
+    setPhotos([newPhoto, ...photos]);
+    navigate('/photos');
+  };
+
+
   return (
     <>
     <AuthedUserContext.Provider value={user}>
@@ -44,6 +57,7 @@ const App = () => {
           <Route path='/' element={<Dashboard user={user} />} />
           <Route path='/photos' element={<PhotoList photos={photos}/>} />
           <Route path='/photos/:photoId' element={<PhotoDetails />}/>
+          <Route path="/photos/new" element={<PhotoForm handleAddPhoto={handleAddPhoto} />} />
           </>
           :
           <Route path='/' element={<HomePage />} />

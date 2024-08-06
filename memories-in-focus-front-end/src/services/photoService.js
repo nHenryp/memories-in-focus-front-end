@@ -1,5 +1,23 @@
 const BASE_URL ='http://localhost:3000/photos'
 
+
+const create = async (photoFormData) => {
+    try {
+      const res = await fetch(BASE_URL, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(photoFormData),
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
 const index = async () => {
     try {
         const res = await fetch(BASE_URL, {
@@ -22,4 +40,4 @@ const show = async (photoId) => {
     }
 }
 
-export { index, show }
+export { index, show, create };
