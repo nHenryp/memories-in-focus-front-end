@@ -1,12 +1,10 @@
-// src/components/HootForm/HootForm.jsx
-
 import { useState } from 'react';
 
 const PhotoForm = (props) => {
   const [formData, setFormData] = useState({
     title: '',
     text: '',
-    category: 'News',
+    image: '',
   });
 
   const handleChange = (evt) => {
@@ -39,21 +37,6 @@ const PhotoForm = (props) => {
           value={formData.text}
           onChange={handleChange}
         />
-        <label htmlFor="category-input">Category</label>
-        <select
-          required
-          name="category"
-          id="category-input"
-          value={formData.category}
-          onChange={handleChange}
-        >
-          <option value="News">News</option>
-          <option value="Games">Games</option>
-          <option value="Music">Music</option>
-          <option value="Movies">Movies</option>
-          <option value="Sports">Sports</option>
-          <option value="Television">Television</option>
-        </select>
         <button type="submit">SUBMIT</button>
       </form>
     </main>
