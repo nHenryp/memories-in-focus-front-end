@@ -1,17 +1,26 @@
 import { useState } from 'react';
+import ImageUpload from '../ImageUpload/ImageUpload.jsx'
+
+
 const PhotoForm = ({ handleAddPhoto }) => {
-    const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
     title: '',
     image: '',
-    text: ''
+    description: ''
   });
   const handleChange = (evt) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
   };
+
+  const handleImageUpload = (imageUrl) => {
+    setFormData({ ...formData, image: imageUrl });
+  };
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleAddPhoto(formData)
   };
+
   return (
     <main>
       <form onSubmit={handleSubmit}>
@@ -24,18 +33,17 @@ const PhotoForm = ({ handleAddPhoto }) => {
           value={formData.title}
           onChange={handleChange}
         />
-        <label htmlFor="image-input">image</label>
-        <input
-          required
+
+        <label htmlFor="image-upload">Image</label>
+        <ImageUpload
           name="image"
-          id="image-input"
-          value={formData.image}
-          onChange={handleChange}
+          label="Upload Image"
+          photoImage={formData.image}
+          handleImageUpload={handleImageUpload}
         />
         <label htmlFor="description-input">Text</label>
         <textarea
           required
-          type="text"
           name="description"
           id="description-input"
           value={formData.description}

@@ -13,7 +13,6 @@ import PhotoForm from './components/PhotoForm/PhotoForm';
 
 
 
-
 export const AuthedUserContext = createContext(null)
 
 const App = () => {
