@@ -5,7 +5,7 @@ import CommentForm from '../CommentForm/CommentForm'
 import { AuthedUserContext } from '../../App'
 
 
-const PhotoDetails = () => {
+const PhotoDetails = ({handleDeletePhoto}) => {
 
     const user = useContext (AuthedUserContext)
 
@@ -46,7 +46,7 @@ const PhotoDetails = () => {
         return (
             <main>
               <header>
-                <p>No image uploaded</p>
+                <img src={photo.image}/>
                 <h1>{photo.title.toUpperCase()}</h1>
                 <p>
                   {photo.author.username} created on

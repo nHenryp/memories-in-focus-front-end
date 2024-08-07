@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 
 const PhotoList = ({ photos }) => {
     console.log(photos)
+
+    
     return (
         <main>
             {photos.map(photo => {
@@ -12,6 +14,7 @@ const PhotoList = ({ photos }) => {
                <header>
                  <h2>{photo.title}</h2>
                  <p>
+                   <img src={photo.image}/>
                    {photo.author.username} created on 
                    {new Date(photo.createdAt).toLocaleDateString()}
                  </p>

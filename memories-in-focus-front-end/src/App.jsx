@@ -74,7 +74,7 @@ useEffect(() => {
           <>
           <Route path='/' element={<Dashboard user={user} />} />
           <Route path='/photos' element={<PhotoList photos={photos}/>} />
-          <Route path='/photos/:photoId' element={<PhotoDetails />}/>
+          <Route path="/photos/:photoId" element={<PhotoDetails handleDeletePhoto={handleDeletePhoto} />} />
           <Route path="/photos/new" element={<PhotoForm handleAddPhoto={handleAddPhoto} />} />
           <Route path="/photos/:photoId/edit" element={<PhotoForm handleUpdatePhoto={handleUpdatePhoto} />} />
           <Route path="/photos/:photoId/comments/:commentId/edit" element={<CommentForm />} />
