@@ -10,7 +10,7 @@ import * as photoService from '../src/services/photoService'
 import PhotoList from './components/PhotoList/PhotoList'
 import PhotoDetails from './components/PhotoDetails/PhotoDetails'
 import PhotoForm from './components/PhotoForm/PhotoForm';
-
+import CommentForm from './components/CommentForm/CommentForm'
 
 
 export const AuthedUserContext = createContext(null)
@@ -26,14 +26,19 @@ const App = () => {
     authService.signout()
     setUser(null)
   }
-  useEffect(() => {
-    const fetchAllPhotos = async () => {
-      const photoData = await photoService.index()
-      console.log(photoData)
-      setPhotos(photoData)
-    }
-    if (user) fetchAllPhotos()
-  }, [user])
+
+    const fetchAllPhotos = async () =>{
+    const allPhotos = await photoService.index() 
+    setPhotos(allPhotos) // set to state
+  }
+  
+useEffect(() => {
+  
+  if (user) {
+    fetchAllPhotos()
+  }
+
+}, [user])
   
 
   const handleAddPhoto = async (photoFormData) => {
@@ -41,6 +46,20 @@ const App = () => {
     setPhotos([newPhoto, ...photos]);
     navigate('/photos');
   };
+
+  const handleUpdatePhoto = async (photoId, formData) => {
+    const updatedPhoto = await photoService.update(photoId, formData)
+    console.log(updatedPhoto)
+    navigate(`/photos/${photoId}`);
+  };
+  
+  
+  const handleDeletePhoto = async (photoId) => {
+    const deletedPhoto = await photoService.deletePhoto(photoId)
+    console.log(deletedPhoto)
+    await fetchAllPhotos()
+    navigate('/photos')
+  }
 
 
   return (
@@ -57,9 +76,14 @@ const App = () => {
           <Route path='/photos' element={<PhotoList photos={photos}/>} />
           <Route path='/photos/:photoId' element={<PhotoDetails />}/>
           <Route path="/photos/new" element={<PhotoForm handleAddPhoto={handleAddPhoto} />} />
+          <Route path="/photos/:photoId/edit" element={<PhotoForm handleUpdatePhoto={handleUpdatePhoto} />} />
+          <Route path="/photos/:photoId/comments/:commentId/edit" element={<CommentForm />} />
           </>
           :
+          <>
           <Route path='/' element={<HomePage />} />
+          <Route path="/photos" element={<PhotoList />} />
+          </>
         }
 
         <Route path='/signup' element={<SignupForm setUser={setUser} />} />
