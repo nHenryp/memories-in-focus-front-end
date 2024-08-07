@@ -40,4 +40,18 @@ const show = async (photoId) => {
     }
 }
 
-export { index, show, create };
+const deletePhoto = async (photoId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${photoId}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export { index, show, create, deletePhoto };

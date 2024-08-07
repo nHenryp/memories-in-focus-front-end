@@ -43,6 +43,13 @@ const App = () => {
   };
 
 
+
+
+  const handleDeletePhoto = async (photoId) => {
+    const deletePhoto = await photoService.deletePhoto(photoId)
+    setPhotos(photos.filter((photo) => photo._id !== photoId))
+    navigate('/photos')
+  }
   return (
     <>
     <AuthedUserContext.Provider value={user}>
@@ -55,7 +62,7 @@ const App = () => {
           <>
           <Route path='/' element={<Dashboard user={user} />} />
           <Route path='/photos' element={<PhotoList photos={photos}/>} />
-          <Route path='/photos/:photoId' element={<PhotoDetails />}/>
+          <Route path='/photos/:photoId' element={<PhotoDetails handleDeletePhoto={handleDeletePhoto}/>}/>
           <Route path="/photos/new" element={<PhotoForm handleAddPhoto={handleAddPhoto} />} />
           </>
           :
