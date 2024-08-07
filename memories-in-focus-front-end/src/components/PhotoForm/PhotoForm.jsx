@@ -1,13 +1,31 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react'
 import ImageUpload from '../ImageUpload/ImageUpload.jsx'
+import { useParams } from 'react-router-dom'
+import * as photoService from '../../services/photoService'
 
-
-const PhotoForm = ({ handleAddPhoto }) => {
+const PhotoForm = ({ handleAddPhoto, handleUpdatePhoto }) => {
+  
   const [formData, setFormData] = useState({
     title: '',
     image: '',
-    description: ''
+    text: ''
   });
+
+  const{ photoId } = useParams()
+
+  useEffect(() => {
+    const fetchPhoto = async () => {
+     const singlePhoto = await photoService.show(photoId) 
+     setFormData(singlePhoto)
+     
+    }
+   if (photoId) {
+     fetchPhoto()
+   }
+  }, [photoId])
+
+
+
   const handleChange = (evt) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
   };
@@ -16,14 +34,21 @@ const PhotoForm = ({ handleAddPhoto }) => {
     setFormData({ ...formData, image: imageUrl });
   };
 
+ 
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    handleAddPhoto(formData)
-  };
+   if (photoId) {
+    handleUpdatePhoto(photoId, formData)
+   } else {
+     handleAddPhoto(formData)
+  }
+}
 
   return (
     <main>
       <form onSubmit={handleSubmit}>
+      <h1>{photoId ? 'Edit Photo' : 'New Photo'}</h1>
         <label htmlFor="title-input">Title</label>
         <input
           required
@@ -41,7 +66,7 @@ const PhotoForm = ({ handleAddPhoto }) => {
           photoImage={formData.image}
           handleImageUpload={handleImageUpload}
         />
-        <label htmlFor="description-input">Text</label>
+        <label htmlFor="description-input">Description</label>
         <textarea
           required
           name="description"

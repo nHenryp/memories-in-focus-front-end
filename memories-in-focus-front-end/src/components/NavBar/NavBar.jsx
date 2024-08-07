@@ -14,8 +14,8 @@ const NavBar = ({ handleSignout }) => {
       { user ? (
         <nav>
           <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to='/photos'>Photos</Link></li>
+            <li><Link to="/">Dashboard</Link></li>
+            <li><Link to='/photos'>Photo Gallery</Link></li>
             <li><Link to="/photos/new">New Photo</Link></li>
             <li><Link to="" onClick={handleSignout}>Sign Out</Link></li>
           </ul>
@@ -25,6 +25,7 @@ const NavBar = ({ handleSignout }) => {
           <ul>
             <li><Link to="/signin">Sign In</Link></li>
             <li><Link to="/signup">Sign Up</Link></li>
+            <li><Link to="/">Home</Link></li>
           </ul>
         </nav>
       )}

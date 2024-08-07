@@ -3,20 +3,29 @@ import { Link } from 'react-router-dom'
 
 const PhotoList = ({ photos }) => {
     console.log(photos)
+
+    
     return (
-    <main>
-        {photos.map((photo) => (
-            <Link key={photo._id} to={`/photos/${photo._id}`}>
-               <h3>{photo.title}</h3>
-               <h5>
-                {photo.author.username} posted on<br/>
-                {new Date(photo.createdAt).toLocaleDateString()}
-               </h5>
-            </Link>
-        ))}
-
-    </main>
+        <main>
+            {photos.map(photo => {
+                return (
+             <Link key={photo._id} to={`/photos/${photo._id}`}>
+             <article>
+               <header>
+                 <h2>{photo.title}</h2>
+                 <p>
+                   <img src={photo.image}/>
+                   {photo.author.username} created on 
+                   {new Date(photo.createdAt).toLocaleDateString()}
+                 </p>
+               </header>
+               <p>{photo.text}</p>
+             </article>
+           </Link>
+         )
+       })}   
+  </main>
     )
-}
-
-export default PhotoList
+  }
+  
+  export default PhotoList
