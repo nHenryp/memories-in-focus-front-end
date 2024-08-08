@@ -11,9 +11,10 @@ const ImageUpload = ({ name, photoImage, handleImageUpload }) => {
     const handleSelectImage = async (event) => {
         const file = event.target.files[0]
 
-        if (file.size > 100000000) {
+        if (file.size > 1000000) {
             return setMessage('Image too large. Please select a smaller image (max: 80KB')
         }
+        
 
         const formData = new FormData() // Create an empty form
 
