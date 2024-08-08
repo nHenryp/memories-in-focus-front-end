@@ -1,14 +1,14 @@
-import { createContext, useState, useEffect } from 'react'
-import { Routes, Route, useNavigate } from 'react-router-dom'
-import NavBar from './components/NavBar/NavBar'
-import HomePage from './components/HomePage/HomePage'
-import SignupForm from './components/SignupForm/SignupForm' 
-import SigninForm from './components/SigninForm/SigninForm'
-import Dashboard from './components/Dashboard/Dashboard'
-import * as authService from '../src/services/authService'
-import * as photoService from '../src/services/photoService'
-import PhotoList from './components/PhotoList/PhotoList'
-import PhotoDetails from './components/PhotoDetails/PhotoDetails'
+import { useEffect, createContext, useState } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import NavBar from './components/NavBar/NavBar';
+import HomePage from './components/HomePage/HomePage';
+import SignupForm from './components/SignupForm/SignupForm';
+import SigninForm from './components/SigninForm/SigninForm';
+import Dashboard from './components/Dashboard/Dashboard';
+import * as authService from '../src/services/authService';
+import * as photoService from '../src/services/photoService';
+import PhotoList from './components/PhotoList/PhotoList';
+import PhotoDetails from './components/PhotoDetails/PhotoDetails';
 import PhotoForm from './components/PhotoForm/PhotoForm';
 import CommentForm from './components/CommentForm/CommentForm'
 
@@ -16,30 +16,24 @@ import CommentForm from './components/CommentForm/CommentForm'
 export const AuthedUserContext = createContext(null)
 
 const App = () => {
-  const [user, setUser] = useState(authService.getUser())
-  const [photos, setPhotos] = useState([])
+  const [user, setUser] = useState(authService.getUser());
+  const [photos, setPhotos] = useState([]);
 
   // Location variables
   const navigate = useNavigate()
-
   const handleSignout = () => {
     authService.signout()
     setUser(null)
   }
-
     const fetchAllPhotos = async () =>{
-    const allPhotos = await photoService.index() 
+    const allPhotos = await photoService.index()
     setPhotos(allPhotos) // set to state
   }
-  
 useEffect(() => {
-  
   if (user) {
     fetchAllPhotos()
   }
-
 }, [user])
-  
 
   const handleAddPhoto = async (photoFormData) => {
     const newPhoto = await photoService.create(photoFormData);
@@ -91,7 +85,7 @@ useEffect(() => {
       </Routes>
       </AuthedUserContext.Provider>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
