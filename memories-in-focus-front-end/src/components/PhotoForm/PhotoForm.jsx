@@ -11,7 +11,7 @@ const PhotoForm = ({ handleAddPhoto, handleUpdatePhoto }) => {
     text: ''
   });
 
-  const{ photoId } = useParams()
+  const { photoId } = useParams()
 
   useEffect(() => {
     const fetchPhoto = async () => {

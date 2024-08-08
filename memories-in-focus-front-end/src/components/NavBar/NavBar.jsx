@@ -1,6 +1,7 @@
 import { useContext } from 'react'; // import useContext to grab the context
 import { AuthedUserContext } from '../../App'
 import { Link } from 'react-router-dom'
+import './NavBar.css'
 
 
 
@@ -12,7 +13,7 @@ const NavBar = ({ handleSignout }) => {
     return (
       <>
       { user ? (
-        <nav>
+        <nav className='navbar-custom'>
           <ul>
             <li><Link to="/">Dashboard</Link></li>
             <li><Link to='/photos'>Photo Gallery</Link></li>

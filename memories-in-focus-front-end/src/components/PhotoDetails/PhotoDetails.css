@@ -1,0 +1,119 @@
+body {
+    font-family: 'Merriweather Sans', Arial, sans-serif;
+    background-color: #f8f9fa; /* Light background for contrast */
+    color: #333;
+    margin: 0;
+    padding-top: 60px; /* Ensures content is not hidden behind the navbar */
+}
+
+.navbar-custom {
+    background-color: #fff;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.photo-details {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 40px;
+    align-items: center;
+}
+
+.photo-details img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.photo-meta {
+    flex: 1;
+}
+
+.photo-meta h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.photo-meta p {
+    font-size: 1rem;
+    margin: 0;
+    color: #777;
+}
+
+.actions {
+    margin-top: 20px;
+}
+
+.actions button, .actions a {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.actions button:hover, .actions a:hover {
+    background-color: #0056b3;
+}
+
+.comment-section {
+    margin-top: 40px;
+}
+
+.comment-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.comment-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.comment-section form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    resize: vertical;
+}
+
+.comment-section form button {
+    align-self: flex-start;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.comment-section form button:hover {
+    background-color: #218838;
+}
+
+.comment-section .comments-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comment-section .comments-list li {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}

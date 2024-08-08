@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 import * as photoService from '../../services/photoService'
 import CommentForm from '../CommentForm/CommentForm'
 import { AuthedUserContext } from '../../App'
+import './PhotoDetails.css'
 
 
 const PhotoDetails = ({handleDeletePhoto}) => {
@@ -44,63 +45,70 @@ const PhotoDetails = ({handleDeletePhoto}) => {
       
 
         return (
-            <main>
-              <header>
-                <img src={photo.image}/>
-                <h1>{photo.title.toUpperCase()}</h1>
-                <p>
-                  {photo.author.username} created on
-                  {new Date(photo.createdAt).toLocaleDateString()}
-                </p>
-              </header>
-              <p>{photo.description}</p>
-    
-              
-    
-    {/* Update/delete*/}
-    { photo.author._id === user._id &&
-          
-    <section>
-        <>
-        <Link to={`/photos/${photoId}/edit`}>Edit</Link>
-        <button onClick={() => handleDeletePhoto(photoId)}> Delete Photo </button>
-        </>
-        
-    </section>
-     }
-              <section>
-                <h2>Comments</h2>
-                <CommentForm handleAddComment={handleAddComment} />
-                
-     {!photo.comments.length && <p>There are no comments.</p>}
-    
-      {photo.comments.map((comment) => (
-        <article key={comment._id}>
-          <header>
-            <p>
-              {comment.author.username} created on
-              {new Date(comment.createdAt).toLocaleDateString()}
-            </p>
-    
-         
-    
-          </header>
-          <p>{comment.text}</p>
-          { comment.author._id === user._id &&
-          <section>
-          
-          <Link to={`/photos/${photoId}/comments/${comment._id}/edit`}>Edit comment </Link>
-          <button onClick={() => handleDeleteComment (comment._id)}>Delete Comment </button>
-          
-          </section>
-         }
-        
-        </article>
-      ))}
+          <main className="container">
+              <div className="photo-details">
+                  <img src={photo.image} alt={photo.title} />
+                  <div className="photo-meta">
+                      <h1>{photo.title.toUpperCase()}</h1>
+                      <p>
+                          Posted by <strong>{photo.author.username}</strong> on{" "}
+                          {new Date(photo.createdAt).toLocaleDateString()}
+                      </p>
+                      <p>{photo.description}</p>
+                      {photo.author._id === user._id && (
+                          <div className="actions">
+                              <Link to={`/photos/${photoId}/edit`} className="btn btn-primary">
+                                  Edit
+                              </Link>
+                              <button
+                                  className="btn btn-danger"
+                                  onClick={() => handleDeletePhoto(photoId)}
+                              >
+                                  Delete Photo
+                              </button>
+                          </div>
+                      )}
+                  </div>
+              </div>
+      
+              <section className="comment-section">
+                  <h2>Comments</h2>
+                  <CommentForm handleAddComment={handleAddComment} />
+                  {!photo.comments.length && <p>There are no comments.</p>}
+      
+                  <ul className="comments-list">
+                      {photo.comments.map((comment) => (
+                          <li key={comment._id}>
+                              <header>
+                                  <p>
+                                      {comment.author.username} created on{" "}
+                                      {new Date(comment.createdAt).toLocaleDateString()}
+                                  </p>
+                              </header>
+                              <p>{comment.text}</p>
+                              {comment.author._id === user._id && (
+                                  <div className="actions">
+                                      <Link
+                                          to={`/photos/${photoId}/comments/${comment._id}/edit`}
+                                          className="btn btn-secondary"
+                                      >
+                                          Edit Comment
+                                      </Link>
+                                      <button
+                                          className="btn btn-danger"
+                                          onClick={() => handleDeleteComment(comment._id)}
+                                      >
+                                          Delete Comment
+                                      </button>
+                                  </div>
+                              )}
+                          </li>
+                      ))}
+                  </ul>
               </section>
-            </main>
-        )
-      }
+          </main>
+      );
+    }
       
       
       
