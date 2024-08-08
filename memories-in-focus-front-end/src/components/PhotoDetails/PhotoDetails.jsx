@@ -4,19 +4,10 @@ import * as photoService from '../../services/photoService'
 import CommentForm from '../CommentForm/CommentForm'
 import { AuthedUserContext } from '../../App'
 import './PhotoDetails.css'
-
-
 const PhotoDetails = ({handleDeletePhoto}) => {
-
     const user = useContext (AuthedUserContext)
-
     const [photo, setPhoto] = useState(null)
-
-    
-
     const { photoId } = useParams()
-
-
     useEffect(() => {
         const fetchPhoto = async () => {
             const photo = await photoService.show(photoId)
@@ -25,16 +16,13 @@ const PhotoDetails = ({handleDeletePhoto}) => {
         }
         fetchPhoto()
     }, [photoId])
-
     if (!photo) return <main>Loading...</main>
-
     const handleAddComment = async (formData) => {
         const newComment = await photoService.createComment(photoId, formData)
        setPhoto ({
-          ...photo, 
+          ...photo,
           comments: [...photo.comments, newComment] })
       }
-      
       const handleDeleteComment = async (commentId) => {
       const deletedComment = await photoService.deleteComment(photoId,commentId);
           setPhoto({
@@ -42,8 +30,6 @@ const PhotoDetails = ({handleDeletePhoto}) => {
               comments: photo.comments.filter((comment) => comment._id !== commentId),
             });
         };
-      
-
         return (
           <main className="container">
               <div className="photo-details">
@@ -70,12 +56,10 @@ const PhotoDetails = ({handleDeletePhoto}) => {
                       )}
                   </div>
               </div>
-      
               <section className="comment-section">
                   <h2>Comments</h2>
                   <CommentForm handleAddComment={handleAddComment} />
                   {!photo.comments.length && <p>There are no comments.</p>}
-      
                   <ul className="comments-list">
                       {photo.comments.map((comment) => (
                           <li key={comment._id}>
@@ -109,7 +93,4 @@ const PhotoDetails = ({handleDeletePhoto}) => {
           </main>
       );
     }
-      
-      
-      
     export default PhotoDetails;

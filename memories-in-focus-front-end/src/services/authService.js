@@ -58,7 +58,7 @@ const signin = async (user) => {
       }
     } catch (error) {
       console.log(error);
-      throw err;
+      throw error;
     }
   };
 
