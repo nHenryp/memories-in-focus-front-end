@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import ImageUpload from '../ImageUpload/ImageUpload.jsx'
 import { useParams } from 'react-router-dom'
 import * as photoService from '../../services/photoService'
+import './PhotoForm.css'
 
 const PhotoForm = ({ handleAddPhoto, handleUpdatePhoto }) => {
   
@@ -47,8 +48,9 @@ const PhotoForm = ({ handleAddPhoto, handleUpdatePhoto }) => {
 
   return (
     <main>
+      <div className='container-lg'>
       <form onSubmit={handleSubmit}>
-      <h1>{photoId ? 'Edit Photo' : 'New Photo'}</h1>
+      <h1>{photoId ? 'Edit Photo' : 'Add New Photo'}</h1>
         <label htmlFor="title-input">Title</label>
         <input
           required
@@ -76,6 +78,7 @@ const PhotoForm = ({ handleAddPhoto, handleUpdatePhoto }) => {
         />
         <button type="submit">SUBMIT</button>
       </form>
+      </div>
     </main>
   );
 };

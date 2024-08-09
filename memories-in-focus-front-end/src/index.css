@@ -24,7 +24,7 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
+  
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
@@ -33,6 +33,45 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+nav.navbar-custom {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 50px; 
+}
+
+nav li {
+  margin-right: 20px; 
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #f0f0f0; 
+  color: #000; 
 }
 
 button {
