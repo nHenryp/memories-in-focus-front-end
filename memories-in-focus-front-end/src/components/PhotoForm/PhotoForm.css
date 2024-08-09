@@ -1,0 +1,14 @@
+form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    gap: 10px;
+    text-align: center;
+    background: border-box;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    width: 300px; /* Fixed width */
+    margin: 50px auto; /* Centering with auto margin */
+    border-radius: 8px; /* Adding some rounded corners */
+    border: 1px solid #ccc;
+}
