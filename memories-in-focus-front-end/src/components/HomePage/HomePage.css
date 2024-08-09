@@ -8,26 +8,26 @@ body {
   background-color: #ffffff; 
 }
 
-/* Dark Mode Styles */
+
 body.dark-mode {
-  background-color: hsl(235, 51%, 29%); 
+  background-color: hsl(217.05deg 28.19% 24.9%);
   color: #e0e0e0; 
 }
 
-/* Header Container to align heading and toggle button */
+
 .header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* Top Content Styling */
+
 .top-content {
   width: 100%;
   margin-bottom: 20px;
 }
 
-/* Description Heading Alignment */
+
 .description-heading {
   text-align: left; 
   margin: 0;
@@ -35,14 +35,14 @@ body.dark-mode {
   color: inherit; 
 }
 
-/* Content Wrapper to align carousel and description side by side */
+
 .content-wrapper {
   display: flex;
   width: 100%;
   align-items: flex-start; 
 }
 
-/* Carousel Container */
+
 .carousel-container {
   flex: 1;
   max-width: 60%; 
@@ -54,14 +54,14 @@ body.dark-mode {
   background-color: #79c0dc; 
 }
 
-/* Carousel Image Styling */
+
 .carousel-image {
   width: 100%; 
   height: 100%; 
   object-fit: cover; 
 }
 
-/* Description Container */
+
 .description-container {
   flex: 1;
   margin-left: 20px;
@@ -71,7 +71,7 @@ body.dark-mode {
   align-items: flex-start; 
 }
 
-/* Large Text Styling */
+
 .large-text {
   font-size: 1.2em; 
   color: inherit; 
@@ -84,13 +84,11 @@ body.dark-mode {
   color: inherit; 
 }
 
-/* Carousel Indicator Button */
 button.indicator {
   background-color: #333; 
   height: 4px; 
   width: 30px; 
   border: none;
-border-radius: inherit;
   margin: 0 5px; 
   outline: none;
   box-shadow: none; 
@@ -105,7 +103,7 @@ button.indicator.indicator-active {
   opacity: 1; 
 }
 
-/* Main Container */
+
 main {
   display: flex;
   flex-direction: column;
@@ -113,7 +111,7 @@ main {
   padding: 20px;
 }
 
-/* Dark Mode Button */
+
 .theme-toggle-button {
   margin-left: 20px;
   padding: 10px;
@@ -125,7 +123,6 @@ main {
 }
 
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .content-wrapper {
       flex-direction: column; 
@@ -197,3 +194,5 @@ nav a:hover {
       padding: 10px;
   }
 }
+
+

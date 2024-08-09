@@ -1,4 +1,4 @@
-import { useContext } from 'react'; // import useContext to grab the context
+import { useContext } from 'react'; 
 import { AuthedUserContext } from '../../App'
 import { Link } from 'react-router-dom'
 import './NavBar.css'
@@ -14,6 +14,7 @@ const NavBar = ({ handleSignout }) => {
       <>
       { user ? (
         <nav className='navbar-custom'>
+          <span className='logo'>Memories in Focus</span>
           <ul>
             <li><Link to="/">Dashboard</Link></li>
             <li><Link to='/photos'>Photo Gallery</Link></li>

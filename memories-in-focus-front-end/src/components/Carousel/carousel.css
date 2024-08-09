@@ -66,7 +66,6 @@ button.indicator {
     background-color: white;
     height: 0.5rem;
     width: 0.5rem;
-    /* border-radius: 100%; */
     border: none;
     outline: none;
     box-shadow: 0px 0px 5px rgb(229, 228, 179);

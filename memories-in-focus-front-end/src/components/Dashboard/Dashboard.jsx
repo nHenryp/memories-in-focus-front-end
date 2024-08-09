@@ -29,12 +29,12 @@ const Dashboard = () => {
         { src: "/m16.jpg", alt: "morocco" },
         { src: "/m17.jpg", alt: "morocco" },
         { src: "/m18.jpg", alt: "morocco" },
-        { src: "/m1.jpg", alt: "morocco" },
-        { src: "/m2.jpg", alt: "morocco" },
-        { src: "/m3.jpg", alt: "morocco" },
-        { src: "/m4.jpg", alt: "morocco" },
-        { src: "/m5.jpg", alt: "morocco" },
-        { src: "/m6.jpg", alt: "morocco" },
+        { src: "/a1.jpg", alt: "albania" },
+        { src: "/a2.jpg", alt: "albania" },
+        { src: "/a3.jpg", alt: "albania" },
+        { src: "/a4.jpg", alt: "albania" },
+        { src: "/a5.jpg", alt: "albania" },
+        { src: "/a6.jpg", alt: "albania" },
     ];
 
     return (

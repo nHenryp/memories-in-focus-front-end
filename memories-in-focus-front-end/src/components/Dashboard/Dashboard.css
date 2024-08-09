@@ -1,7 +1,7 @@
-/* Importing the same font family */
+
 @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
-/* Body Styling */
+
 body {
   font-family: 'Merriweather Sans', sans-serif;
   margin: 0;
@@ -11,72 +11,75 @@ body {
   background-color: #ffffff;
 }
 
-/* Dark Mode Styles */
+
 body.dark-mode {
-  background-color: hsl(235, 51%, 29%);
+  background-color: hsl(217.05deg 28.19% 24.9%);
   color: #e0e0e0;
 }
 
-/* Light Mode (default) */
-body {
-  background-color: #ffffff;
-  color: #121212;
+
+.header-container {
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%; 
+  background-color: inherit; 
 }
 
-/* Dark Mode */
-body.dark-mode {
-  background-color: hsl(235, 51%, 29%);
-  color: #e0e0e0;
+
+h1 {
+  font-size: 2em;
+  margin: 0; 
+  color: inherit; 
 }
 
 
 .theme-toggle-button {
-  position: absolute; /* Position it absolutely within the body */
-  top: 20px; /* Distance from the top */
-  right: 20px; /* Distance from the right */
   padding: 10px;
   border: none;
   cursor: pointer;
   background-color: #08082e;
   color: #e0e0e0;
   border-radius: 5px;
+  margin-left: auto; 
+  transition: background-color 0.3s ease;
 }
-
-
 
 .theme-toggle-button:hover {
   background-color: #0056b3;
 }
 
+/* Dark Mode Styles for Button */
+body.dark-mode .theme-toggle-button {
+  background-color: #e0e0e0;
+  color: #121212;
+}
 
-
-
-
+body.dark-mode h1 {
+  color: #e0e0e0;
+}
 
 
 main {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center items horizontally */
-  justify-content: center; /* Center items vertically */
-  min-height: 100vh; /* Ensure it takes up the full viewport height */
+  align-items: center; 
+  justify-content: center; 
+  min-height: 100vh; 
   padding: 20px;
 }
 
-/* Heading Styling */
-h1 {
-  font-size: 2em;
-  margin-bottom: 10px;
-  color: inherit;
-}
 
-/* Paragraph Styling */
 p {
   font-size: 1em;
   margin-bottom: 20px;
   text-align: center;
   color: inherit;
 }
+
+
 .carousel {
   position: relative;
   display: flex;
@@ -86,7 +89,6 @@ p {
   height: 300px;
   margin: auto;
 }
-
 
 .slide {
   border-radius: 0.5rem;
@@ -104,7 +106,7 @@ p {
   width: 2rem;
   height: 2rem;
   color: white;
-  filter: drop-shadow(0px 0px 5px #555)
+  filter: drop-shadow(0px 0px 5px #555);
 }
 
 .arrow:hover {
@@ -116,7 +118,7 @@ p {
 }
 
 .arrow-right {
-  right: 1rem
+  right: 1rem;
 }
 
 .indicators {
@@ -137,7 +139,6 @@ p {
   cursor: pointer;
 }
 
-
 .indicator-inactive {
   background-color: rgb(229, 228, 179);
 }
@@ -154,7 +155,7 @@ button.indicator {
   cursor: pointer;
 }
 
-/* Content Wrapper to align carousel and description side by side */
+
 .content-wrapper {
   display: flex;
   width: 100%;
@@ -166,15 +167,15 @@ button.indicator {
   max-width: 60%;
   height: 60vh;
   display: flex;
-  align-items: center; /* Vertically center items within the container */
-  justify-content: center; /* Horizontally center items within the container */
+  align-items: center; 
+  justify-content: center; 
   overflow: hidden;
   position: relative;
   background-color: #1f1f1f;
-  margin: auto; /* Center the container horizontally within its parent */
+  margin: auto; 
 }
 
-/* Carousel Image Styling */
+
 .carousel-image {
   width: 100%; 
   height: 100%; 
@@ -182,16 +183,8 @@ button.indicator {
 }
 
 
-
-
-
-
-
-
-
-/* Responsive Design */
 @media (max-width: 768px) {
   .carousel-container {
-    height: 40vh; /* Adjusted height for smaller screens */
+    height: 40vh; 
   }
 }

@@ -16,7 +16,7 @@ const HomePage = () => {
     }, [isDarkMode]);
 
     const imageData = [
-        { src: "/m1.jpg", alt: "morocco" },
+        { src: "/a2.jpg", alt: "car in albania" },
         { src: "/m2.jpg", alt: "morocco" },
         { src: "/m3.jpg", alt: "morocco" },
         { src: "/m4.jpg", alt: "morocco" },
@@ -34,14 +34,13 @@ const HomePage = () => {
         <main>
             <div className="top-content">
                 <div className="header-container">
-                    <h1>Welcome to the Homepage</h1>
+                    <h1>Memories in Focus</h1>
                     <button onClick={toggleTheme} className="theme-toggle-button">
                         {isDarkMode ? 'Light Mode' : 'Dark Mode'}
                     </button>
                 </div>
                 <h3 className="description-heading">
-                    If you sign up for a new account, you will have the ability to sign in
-                    and see your super secret dashboard.
+                   Sign up for a new account to start creating your visual analog film diary
                 </h3>
             </div>
             <div className="content-wrapper">
@@ -60,6 +59,7 @@ const HomePage = () => {
                         From dreamy landscapes to poignant portraits, our gallery celebrates the 
                         beauty of imperfection and the charm of nostalgia.
                     </p>
+                    <div className="bordered-container">
                     <p className="small-bold-text">
                         <strong>Explore</strong> the gallery to discover the grainy elegance of film, where every frame 
                         is a masterpiece waiting to be appreciated. Whether you’re a film photography 
@@ -69,6 +69,7 @@ const HomePage = () => {
                     <p className="small-bold-text">
                         <strong>Join us</strong> on this visual odyssey, and let every frame inspire your imagination.
                     </p>
+                    </div>
                 </div>
             </div>
         </main>
