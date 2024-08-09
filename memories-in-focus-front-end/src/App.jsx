@@ -13,7 +13,7 @@ import PhotoForm from './components/PhotoForm/PhotoForm';
 import CommentForm from './components/CommentForm/CommentForm'
 
 
-export const AuthedUserContext = createContext(null)
+export const AuthedUserContext = createContext()
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
