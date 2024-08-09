@@ -57,7 +57,6 @@ const PhotoDetails = ({handleDeletePhoto}) => {
                   </div>
               </div>
               <section className="comment-section">
-                  <h5>Comments</h5>
                   <CommentForm handleAddComment={handleAddComment} />
                   {!photo.comments.length && <p>There are no comments.</p>}
                   <ul className="comments-list">
