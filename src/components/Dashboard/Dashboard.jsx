@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from 'react';
-import { AuthedUserContext } from '../../App';
+import { AuthedUserContext } from '../../App.jsx';
 import Carousel from "../Carousel/carousel.jsx";  
 import './Dashboard.css'; 
 

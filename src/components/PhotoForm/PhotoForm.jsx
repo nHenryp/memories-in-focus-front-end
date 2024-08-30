@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import ImageUpload from '../ImageUpload/ImageUpload.jsx'
 import { useParams } from 'react-router-dom'
-import * as photoService from '../../services/photoService'
+import * as photoService from '../../services/photoService.js'
 import './PhotoForm.css'
 
 const PhotoForm = ({ handleAddPhoto, handleUpdatePhoto }) => {
